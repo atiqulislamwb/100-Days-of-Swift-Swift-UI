@@ -8,73 +8,35 @@
 import SwiftUI
 import MapKit
 import LocalAuthentication
-//struct User: Identifiable {
-//    let id = UUID()
-//    var firstName: String
-//    var lastName: String
-//}
-//
-//enum LoadingState {
-//    case loading, success, failed
-//}
-//
-//struct LoadingView: View {
-//    var body:some View{
-//        Text("Loading")
-//    }
-//}
-//
-//struct SuccessView: View {
-//    var body:some View{
-//        Text("Success")
-//    }
-//}
-//
-//struct FailedView: View {
-//    var body:some View{
-//        Text("Failed")
-//    }
-//}
 
-struct Location: Identifiable {
-    let id = UUID()
-    var name: String
-    var coordinate: CLLocationCoordinate2D
-}
+
+
 
 struct ContentView: View {
+    @State private var locations = [Location]()
+    @State private var selectedPlace: Location?
+    let startPosition = MapCameraPosition.region(
+        MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 89.77, longitude: 89.444),
+            span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
+        )
+    )
+  @State private var isUnlocked = false
     
-  //@State private var loadingState = LoadingState.loading
-//@State private var position = MapCameraPosition.region(
-//        MKCoordinateRegion(
-//            center: CLLocationCoordinate2D(latitude: 23.1123, longitude: 89.1131), span:MKCoordinateSpan(
-//            latitudeDelta: 1, longitudeDelta: 1
-//            )
-//        )
-//    )
-//    
-//    let locations = [
-//        Location(name: "Buckingham Palace", coordinate: CLLocationCoordinate2D(latitude: 51.501, longitude: -0.141)),
-//        Location(name: "Tower of London", coordinate: CLLocationCoordinate2D(latitude: 51.508, longitude: -0.076))
-//    ]
-    
-    @State private var isUnlocked = false
     
     func authenticate() {
         let context = LAContext()
         var error: NSError?
 
-        // check whether biometric authentication is possible
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            // it's possible, so go ahead and use it
-            let reason = "We need to unlock your data."
+            let reason = "Please authenticate yourself to unlock your places."
 
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
-                // authentication has now completed
+
                 if success {
                     isUnlocked = true
                 } else {
-                  isUnlocked = false
+                isUnlocked = false
                 }
             }
         } else {
@@ -83,15 +45,47 @@ struct ContentView: View {
     }
     
     
+    
       var body: some View {
-          VStack {
-              if isUnlocked {
-                  Text("Unlocked")
-              } else {
-                  Text("Locked")
+          if isUnlocked {
+              MapReader { proxy in
+                  Map(initialPosition: startPosition){
+                      
+                      ForEach(locations) { location in
+                          Annotation(location.name, coordinate: location.coordinate) {
+                              Image(systemName: "star.circle")
+                                  .resizable()
+                                  .foregroundStyle(.red)
+                                  .frame(width: 44, height: 44)
+                                  .background(.white)
+                                  .clipShape(.circle)
+                                  .onLongPressGesture{
+                                      selectedPlace = location
+                                  }
+                          }
+                      }
+                  }
+                      .onTapGesture { position in
+                          if let coordinate = proxy.convert(position, from: .local) {
+                              let newLocation = Location(id: UUID(), name: "New location", description: "", latitude: coordinate.latitude, longitude: coordinate.longitude)
+                              locations.append(newLocation)
+                          }
+                      }
+                      .sheet(item: $selectedPlace) { place in
+                          EditView(location: place) { newLocation in
+                              if let index = locations.firstIndex(of: place) {
+                                  locations[index] = newLocation
+                              }
+                          }
+                      }
               }
+          }else{
+              Button("Unlock Places", action: authenticate)
+                  .padding()
+                  .background(.blue)
+                  .foregroundStyle(.white)
+                  .clipShape(.capsule)
           }
-          .onAppear(perform: authenticate)
       }
 }
 

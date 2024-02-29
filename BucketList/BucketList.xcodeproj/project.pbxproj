@@ -11,6 +11,9 @@
 		B4BA115D2B8EF88000A864BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BA115C2B8EF88000A864BD /* ContentView.swift */; };
 		B4BA115F2B8EF88200A864BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4BA115E2B8EF88200A864BD /* Assets.xcassets */; };
 		B4BA11622B8EF88200A864BD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4BA11612B8EF88200A864BD /* Preview Assets.xcassets */; };
+		B4CD56E92B90488000DD76CF /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CD56E82B90488000DD76CF /* Location.swift */; };
+		B4CD56EB2B90511900DD76CF /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CD56EA2B90511900DD76CF /* EditView.swift */; };
+		B4CD56ED2B905BDD00DD76CF /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CD56EC2B905BDD00DD76CF /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		B4BA115E2B8EF88200A864BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4BA11612B8EF88200A864BD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B4BA11682B8F105800A864BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B4CD56E82B90488000DD76CF /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		B4CD56EA2B90511900DD76CF /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		B4CD56EC2B905BDD00DD76CF /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +60,10 @@
 			children = (
 				B4BA11682B8F105800A864BD /* Info.plist */,
 				B4BA115A2B8EF88000A864BD /* BucketListApp.swift */,
+				B4CD56EC2B905BDD00DD76CF /* Result.swift */,
+				B4CD56EA2B90511900DD76CF /* EditView.swift */,
 				B4BA115C2B8EF88000A864BD /* ContentView.swift */,
+				B4CD56E82B90488000DD76CF /* Location.swift */,
 				B4BA115E2B8EF88200A864BD /* Assets.xcassets */,
 				B4BA11602B8EF88200A864BD /* Preview Content */,
 			);
@@ -140,6 +149,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4BA115D2B8EF88000A864BD /* ContentView.swift in Sources */,
+				B4CD56ED2B905BDD00DD76CF /* Result.swift in Sources */,
+				B4CD56E92B90488000DD76CF /* Location.swift in Sources */,
+				B4CD56EB2B90511900DD76CF /* EditView.swift in Sources */,
 				B4BA115B2B8EF88000A864BD /* BucketListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
