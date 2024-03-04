@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B41D298A2B958EAE0000CE65 /* SamplePackage in Frameworks */ = {isa = PBXBuildFile; productRef = B41D29892B958EAE0000CE65 /* SamplePackage */; };
+		B41D298C2B9592A20000CE65 /* ProspectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41D298B2B9592A20000CE65 /* ProspectsView.swift */; };
+		B41D298E2B9593070000CE65 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41D298D2B9593070000CE65 /* MeView.swift */; };
+		B41D29902B95959B0000CE65 /* Prospect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41D298F2B95959B0000CE65 /* Prospect.swift */; };
+		B41D29932B959E140000CE65 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = B41D29922B959E140000CE65 /* CodeScanner */; };
 		B45FD1232B92FA1900B7F274 /* HotProspectsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45FD1222B92FA1900B7F274 /* HotProspectsApp.swift */; };
 		B45FD1252B92FA1900B7F274 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45FD1242B92FA1900B7F274 /* ContentView.swift */; };
 		B45FD1272B92FA1B00B7F274 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B45FD1262B92FA1B00B7F274 /* Assets.xcassets */; };
@@ -14,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B41D298B2B9592A20000CE65 /* ProspectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProspectsView.swift; sourceTree = "<group>"; };
+		B41D298D2B9593070000CE65 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
+		B41D298F2B95959B0000CE65 /* Prospect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prospect.swift; sourceTree = "<group>"; };
 		B45FD11F2B92FA1900B7F274 /* HotProspects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotProspects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B45FD1222B92FA1900B7F274 /* HotProspectsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotProspectsApp.swift; sourceTree = "<group>"; };
 		B45FD1242B92FA1900B7F274 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,6 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B41D29932B959E140000CE65 /* CodeScanner in Frameworks */,
+				B41D298A2B958EAE0000CE65 /* SamplePackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +63,9 @@
 			children = (
 				B45FD1222B92FA1900B7F274 /* HotProspectsApp.swift */,
 				B45FD1242B92FA1900B7F274 /* ContentView.swift */,
+				B41D298F2B95959B0000CE65 /* Prospect.swift */,
+				B41D298D2B9593070000CE65 /* MeView.swift */,
+				B41D298B2B9592A20000CE65 /* ProspectsView.swift */,
 				B45FD1262B92FA1B00B7F274 /* Assets.xcassets */,
 				B45FD1282B92FA1B00B7F274 /* Preview Content */,
 			);
@@ -83,6 +96,10 @@
 			dependencies = (
 			);
 			name = HotProspects;
+			packageProductDependencies = (
+				B41D29892B958EAE0000CE65 /* SamplePackage */,
+				B41D29922B959E140000CE65 /* CodeScanner */,
+			);
 			productName = HotProspects;
 			productReference = B45FD11F2B92FA1900B7F274 /* HotProspects.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +128,10 @@
 				Base,
 			);
 			mainGroup = B45FD1162B92FA1900B7F274;
+			packageReferences = (
+				B41D29882B958EAE0000CE65 /* XCRemoteSwiftPackageReference "SamplePackage" */,
+				B41D29912B959E140000CE65 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = B45FD1202B92FA1900B7F274 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,6 +158,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B41D298E2B9593070000CE65 /* MeView.swift in Sources */,
+				B41D29902B95959B0000CE65 /* Prospect.swift in Sources */,
+				B41D298C2B9592A20000CE65 /* ProspectsView.swift in Sources */,
 				B45FD1252B92FA1900B7F274 /* ContentView.swift in Sources */,
 				B45FD1232B92FA1900B7F274 /* HotProspectsApp.swift in Sources */,
 			);
@@ -342,6 +366,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B41D29882B958EAE0000CE65 /* XCRemoteSwiftPackageReference "SamplePackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/SamplePackage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		B41D29912B959E140000CE65 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B41D29892B958EAE0000CE65 /* SamplePackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B41D29882B958EAE0000CE65 /* XCRemoteSwiftPackageReference "SamplePackage" */;
+			productName = SamplePackage;
+		};
+		B41D29922B959E140000CE65 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B41D29912B959E140000CE65 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B45FD1172B92FA1900B7F274 /* Project object */;
 }

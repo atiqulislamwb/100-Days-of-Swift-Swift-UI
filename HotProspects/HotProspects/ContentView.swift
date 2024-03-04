@@ -6,63 +6,33 @@
 //
 
 import SwiftUI
+import UserNotifications
+import SwiftData
+
+
 
 struct ContentView: View {
     
-    @State private var output = ""
-
-    func fetchReadings() async {
-        let fetchTask = Task {
-            let url = URL(string: "https://hws.dev/readings.json")!
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let readings = try JSONDecoder().decode([Double].self, from: data)
-            return "Found \(readings.count) readings"
-        }
-        
-        let result = await fetchTask.result
-//        do {
-//            output = try result.get()
-//        } catch {
-//            output = "Error: \(error.localizedDescription)"
-//        }
-        
-        //alternative
-        switch result {
-            case .success(let str):
-                output = str
-            case .failure(let error):
-                output = "Error: \(error.localizedDescription)"
-        }
-        
-    }
-    @State private var backgroundColor = Color.red
-
     var body: some View {
-//        Text(output)
-//                   .task {
-//                       await fetchReadings()
-//                   }
-        VStack {
-                  Text("Hello, World!")
-                      .padding()
-                      .background(backgroundColor)
-
-                  Text("Change Color")
-                      .padding()
-                      .contextMenu {
-                          Button("Red") {
-                              backgroundColor = Color.red
-                          }
-
-                          Button("Green") {
-                              backgroundColor = Color.green
-                          }
-
-                          Button("Red", systemImage: "checkmark.circle.fill", role: .destructive) {
-                              backgroundColor = Color.yellow
-                          }
-                      }
-              }
+        TabView {
+            ProspectsView(filter: .none)
+                .tabItem {
+                    Label("Everyone", systemImage: "person.3")
+                }
+            ProspectsView(filter: .contacted)
+                .tabItem {
+                    Label("Contacted", systemImage: "checkmark.circle")
+                }
+            ProspectsView( filter: .uncontacted)
+                .tabItem {
+                    Label("Uncontacted", systemImage: "questionmark.diamond")
+                }
+            MeView()
+                .tabItem {
+                    Label("Me", systemImage: "person.crop.square")
+                }
+        }
+        
     }
 }
 
